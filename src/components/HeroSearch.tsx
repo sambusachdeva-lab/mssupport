@@ -87,8 +87,8 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         For Instant Customer Support Instant Call On -: +1-855-773-6969
         </h1>
         <p className="text-base text-neutral-600 max-w-2xl mx-auto mb-8">
-          Tell us about your issue so we can get you the right guided solutions, diagnostic tools, or connect you with a support ambassador.
-        For Instant Customer Support Instant Call On -: +1-855-773-6969
+          Tell us about your issue so we can Support Instant Call On -: +1-855-773-6969 get you the right guided solutions, diagnostic tools, or connect you with a support ambassador.
+        
         </p>
 
         {/* Search Input Box */}
