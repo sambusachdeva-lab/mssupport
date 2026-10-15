@@ -1,4 +1,4 @@
-YAML
+
 name: Deploy website to Azure Storage
 
 on:
@@ -26,24 +26,19 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Check build output
+      - name: Verify build output
         run: test -f dist/index.html
 
-      - name: Install Azure CLI
-        uses: azure/cli@v2
-        with:
-          inlineScript: |
-            az version
-
       - name: Upload website to Azure Storage
+        uses: azure/cli@v2
         env:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
-        run: |
-          az storage blob upload-batch \
-            --account-name "$AZURE_STORAGE_ACCOUNT" \
-            --account-key "$AZURE_STORAGE_KEY" \
-            --destination '$web' \
-            --source dist \
-            --overwrite
-```
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+              --account-name "$AZURE_STORAGE_ACCOUNT" \
+              --account-key "$AZURE_STORAGE_KEY" \
+              --destination '$web' \
+              --source dist \
+              --overwrite
