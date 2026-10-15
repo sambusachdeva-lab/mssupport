@@ -1,4 +1,4 @@
-```yaml
+YAML
 name: Deploy website to Azure Storage
 
 on:
