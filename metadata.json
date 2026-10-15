@@ -1,0 +1,6 @@
+{
+  "name": "Windows Support & Contact Us",
+  "description": "Official-style Microsoft & Windows Support portal with guided troubleshooting, live support ambassador chat, phone call scheduling, and device diagnostics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
