@@ -1,4 +1,4 @@
-
+```yaml
 name: Deploy website to Azure Storage
 
 on:
@@ -10,6 +10,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,10 +26,16 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Verify build
+      - name: Check build output
         run: test -f dist/index.html
 
-      - name: Upload to Azure
+      - name: Install Azure CLI
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az version
+
+      - name: Upload website to Azure Storage
         env:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
@@ -39,3 +46,4 @@ jobs:
             --destination '$web' \
             --source dist \
             --overwrite
+```
