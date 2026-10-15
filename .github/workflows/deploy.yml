@@ -10,9 +10,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Get source code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -26,19 +25,22 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Verify build output
+      - name: Check build output
         run: test -f dist/index.html
 
-      - name: Upload website to Azure Storage
+      - name: Install Azure CLI
         uses: azure/cli@v2
+        with:
+          inlineScript: az version
+
+      - name: Upload website to Azure
         env:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
-        with:
-          inlineScript: |
-            az storage blob upload-batch \
-              --account-name "$AZURE_STORAGE_ACCOUNT" \
-              --account-key "$AZURE_STORAGE_KEY" \
-              --destination '$web' \
-              --source dist \
-              --overwrite
+        run: |
+          az storage blob upload-batch \
+            --account-name "$AZURE_STORAGE_ACCOUNT" \
+            --account-key "$AZURE_STORAGE_KEY" \
+            --destination '$web' \
+            --source dist \
+            --overwrite
