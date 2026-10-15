@@ -10,24 +10,26 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get source code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: 22
-    package-manager-cache: false
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          package-manager-cache: false
 
       - name: Install dependencies
-  run: npm install
+        run: npm install
 
       - name: Build website
         run: npm run build
 
-      - name: Upload website to Azure
+      - name: Verify build
+        run: test -f dist/index.html
+
+      - name: Upload to Azure
         env:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
