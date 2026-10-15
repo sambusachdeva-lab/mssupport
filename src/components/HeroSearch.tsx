@@ -78,13 +78,13 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
           <span>Microsoft Support</span>
           <span aria-hidden="true">/</span>
           <span className="text-neutral-800 font-medium">Contact Us</span>
-          For Instant Customer Support Instant Call On -: +1-855-773-6969
+          
         </div>
 
         {/* Display headline */}
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 mb-3 text-balance">
           Contact Microsoft Support<br />
-        For Instant Customer Support Instant Call On -: +1-855-773-6969
+        For Instant Customer Support Call On -: +1-855-773-6969
         </h1>
         <p className="text-base text-neutral-600 max-w-2xl mx-auto mb-8">
           Tell us about your issue so we can Support Instant Call On -: +1-855-773-6969 get you the right guided solutions, diagnostic tools, or connect you with a support ambassador.
