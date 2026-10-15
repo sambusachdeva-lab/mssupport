@@ -83,7 +83,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
 
         {/* Display headline */}
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 mb-3 text-balance">
-          Contact Microsoft Support</br>
+          Contact Microsoft Support<br />
         For Instant Customer Support Instant Call On -: +1-855-773-6969
         </h1>
         <p className="text-base text-neutral-600 max-w-2xl mx-auto mb-8">
